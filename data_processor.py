@@ -10,7 +10,7 @@ def process_flight_data(df):
     Process raw flight data similar to your notebook
     This is a simplified version for demo purposes
     """
-    # Feature Engineering - handle date of journey
+    # handle date of journey
     df['Date'] = df['Date_of_Journey'].str.split('/').str[0].astype(int)
     df['Month'] = df['Date_of_Journey'].str.split('/').str[1].astype(int)
     df['Year'] = df['Date_of_Journey'].str.split('/').str[2].astype(int)
