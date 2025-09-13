@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 
-# Import your exact notebook code
 exec(open('notebook_code.py').read())
 
 st.set_page_config(page_title="Flight Price Intelligence Platform", layout="wide")
@@ -13,7 +12,6 @@ st.set_page_config(page_title="Flight Price Intelligence Platform", layout="wide
 st.title("🛫 Flight Price Intelligence Platform")
 st.markdown("**Professional ML Dashboard showcasing 7 different regression models**")
 
-# Sidebar for navigation
 st.sidebar.title("Navigation")
 page = st.sidebar.selectbox("Choose a section:", 
                            ["Price Predictor", "Model Comparison", "Feature Analysis", "Performance Analytics"])
@@ -68,19 +66,16 @@ elif page == "Model Comparison":
                      color_continuous_scale="viridis_r")
         fig2.update_layout(xaxis_tickangle=-45)
         st.plotly_chart(fig2, use_container_width=True)
-    
-    # Winner announcement
+
     st.success("🏆 **Winner: Gradient Boosting Regressor**")
     st.info("🥈 **Runner-up: XGBoost Regressor**")
 
 elif page == "Feature Analysis":
     st.header("🔍 Feature Importance Analysis")
-    
-    # Feature importance from your best model (Gradient Boosting)
+  
     feature_names = X.columns.tolist()
     importance_scores = gbr.feature_importances_
-    
-    # Create feature importance dataframe
+
     feature_df = pd.DataFrame({
         'Feature': feature_names,
         'Importance': importance_scores
@@ -130,6 +125,5 @@ elif page == "Performance Analytics":
     
     st.dataframe(results_df, use_container_width=True)
 
-# Footer
 st.markdown("---")
 st.markdown("**Built with:** Python, Scikit-learn, XGBoost, Streamlit | **Data:** Flight Price Dataset")
